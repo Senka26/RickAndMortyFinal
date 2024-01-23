@@ -1,0 +1,54 @@
+:host {
+  display: flex;
+  justify-content: center;
+  margin: 100px 0px;
+}
+
+.mat-form-field {
+  width: 100%;
+  min-width: 300px;
+}
+
+mat-card {
+  background-color: #D3D3D3;
+}
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+// input::placeholder {
+//   font-style: italic;
+// }
+
+.mat-input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.mat-input-element::placeholder {
+  font-style: italic;
+}
+
+input {
+  background-color: #FFFFFF;
+  height: 30px;
+}
+
+.error {
+  padding: 16px;
+  width: 300px;
+  color: white;
+  background-color: red;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.button-style {
+  background-color: #f4f4f4;
+}

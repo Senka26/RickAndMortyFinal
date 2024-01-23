@@ -1,0 +1,57 @@
+<nav class="row">
+    <div class="button">
+        <mat-form-field>
+            <!-- (input)="applyFilters()" dodaj -->
+            <input matInput placeholder="Name" [(ngModel)]="nameFilter">
+        </mat-form-field>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>SPECIES</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>STATUS</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>GENDER</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>SEARCH</button>
+    </div>
+</nav>
+
+<!-- ovo je sa dugmicima ok: -->
+<!-- <nav class="row">
+    <div class="button">
+        <button mat-stroked-button>NAME</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>SPECIES</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>STATUS</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>GENDER</button>
+    </div>
+    <div class="button">
+        <button mat-stroked-button>SEARCH</button>
+    </div>
+</nav> -->
+
+<!-- ovo ne: -->
+<!-- <ng-container *ngFor="let row of rows">
+    <div class="row">
+      <app-character-item *ngFor="let rectangle of row" [height]="rectangle.height" [width]="rectangle.width" [color]="rectangle.color" [ngStyle]="{'width': itemWidth, 'margin': itemMargin}"></app-character-item>
+    </div>
+</ng-container> -->
+
+<!-- <ng-container *ngIf="characters$ | async as characters"> -->
+    <div class="row">
+      <app-character-item *ngFor="let character of (characters$ | async)?.results" [character]="character"></app-character-item>
+    </div>
+<!-- </ng-container> -->
+
+
+
+<!-- button klasu mozda izvuci negde da se ne ponavlja -->
+<!-- type za svaki button? -->

@@ -1,0 +1,19 @@
+<!-- <mat-toolbar color="primary">
+    <div fxLayout="row" fxLayoutGap="8px" fxLayoutAlign="start center">
+        <img src="\assets\random-task.svg" alt="Logo" height="40">
+        <button mat-button> Favourites </button>
+        <button mat-button> Logout </button>
+    </div>
+</mat-toolbar> -->
+
+<nav>
+    <img src="\assets\random-task.svg" alt="Logo">
+    <ul>
+        <li>
+            <a routerLink="/favourites">Favourites</a>
+            <a routerLink="/logout">Log out</a>
+        </li>
+    </ul>
+</nav>
+
+<app-character-list></app-character-list>

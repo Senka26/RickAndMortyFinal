@@ -1,0 +1,27 @@
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 99%;
+    margin-left: 9px;
+}
+
+.button {
+    margin: 0 5px;
+}
+
+.button:last-child {
+    margin-left: auto;
+    margin-right: 0.5vw;
+}
+
+.row {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+app-character-item {
+    margin: 0 5px;
+    display: inline-block;
+}
+

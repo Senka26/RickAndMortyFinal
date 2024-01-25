@@ -39,17 +39,12 @@
 
 <!-- button klasu mozda izvuci negde da se ne ponavlja -->
 <!-- type za svaki button? -->
-<!-- ========================================= -->
 
-<mat-paginator *ngIf="dataSource" [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
+<mat-paginator  [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
     (page)="handlePageEvent($event)" showFirstLastButtons>
 </mat-paginator>
 
-<!-- <mat-paginator *ngIf="dataSource" [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
-               (page)="pageChanged($event)" showFirstLastButtons>
-</mat-paginator> -->
-
-<div *ngIf="dataSource" class="row">
+<div  class="row">
   <div *ngFor="let character of paginatedCharacters" class="character-item" (click)="openModal(character)">
     <img [src]="character.image" alt="Character Image">
   </div>

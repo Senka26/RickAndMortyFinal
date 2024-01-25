@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, map, tap, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,11 +12,10 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  getCharacters(page?: number): Observable<any> { //ja dodala ? da bi i dalje radio prikaz karaktera na listi
+  getCharacters(page?: number): Observable<any> {
     const url = `${this.apiUrl}?page=${page}`;
     return this.http.get(url)
       .pipe(
-        tap(data => console.log(`Characters data for page ${page}:`, data)),
         catchError(error => {
           console.error('Error fetching characters:', error);
           return throwError(() => new Error('Ovo je greška'));

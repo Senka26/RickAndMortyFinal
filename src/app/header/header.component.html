@@ -8,12 +8,8 @@
 
 <nav>
     <img src="\assets\random-task.svg" alt="Logo">
-    <ul>
-        <li>
-            <a routerLink="/favourites">Favourites</a>
-            <a routerLink="/logout">Log out</a>
-        </li>
-    </ul>
+    <button mat-stroked-button>Favourites</button>
+    <button mat-stroked-button (click)="logout()">Log out</button>
 </nav>
 
 <app-character-list></app-character-list>

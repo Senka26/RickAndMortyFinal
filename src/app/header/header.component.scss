@@ -3,12 +3,20 @@ body {
 }
 
 nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #dddddd;
     padding: 10px;
 }
 
 nav img {
     height: 40px;
+    margin-right: auto;
+}
+
+nav button {
+    margin-left: 1vw;
 }
 
 nav ul {

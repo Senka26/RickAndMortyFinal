@@ -23,58 +23,39 @@ export class CharacterListComponent implements OnInit {
   genderFilter: string = '';
   searchFilter: string = '';
 
-  // currentPage = 1;
-  // totalPages: number;
-
   pageIndex = 0;
   pageSize = 20;
-  // pageSizeOptions: number[] = [10, 20, 30]; // obrisi jer je trazeno da se prikazuje tacno 20 el. po stranici
   paginatedCharacters: any[] = [];
 
   totalNumOfCharacters = 0;
 
   dataSource: MatTableDataSource<any>;
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  // @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator; //msm da mi ipak ne treba
 
   constructor(private characterService: CharacterService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
 
-    this.characters$ = this.characterService.getCharacters();
+    this.characters$ = this.characterService.getCharacters(1);
     this.characters$.subscribe(data => {
-      console.log('Data received:', data);
+      // console.log('Data received:', data);
       this.totalNumOfCharacters = data.info.count;
       this.dataSource = new MatTableDataSource(data.results);
-      this.dataSource.paginator = this.paginator;
-      console.log('this.paginator', this.paginator);
+      // this.dataSource.paginator = this.paginator; //msm da mi ipak ne treba
+      // console.log('this.paginator', this.paginator);
       this.paginateCharacters();
     });
 
-    // this.characters$ = this.characterService.getCharacters();
-    // this.characters$.subscribe(characters => {
-    //   this.dataSource = new MatTableDataSource(characters);
-    //   this.dataSource.paginator = this.paginator;
-    //   this.paginateCharacters();
-    // });
-
-    // this.loadCharacters(); //ovo ne
-
-    //ok bez paginacije:
-    // this.characters$ = this.characterService.getCharacters();
   }
 
   numberOfRectangles = 27;
-
   rectangles = Array.from({ length: this.numberOfRectangles }, () => ({ height: 120, width: 100, color: '#808080' }));
-
   itemsPerRow = 6;
 
   get rows(): any[] {
-    // Razdvajam pravougaonike u grupe prema broju u svakom redu
     return this.chunkArray(this.rectangles, this.itemsPerRow);
   }
 
-  // Pomoćna funkcija za razdvajanje niza na manje grupe
   private chunkArray(array: any[], chunkSize: number): any[] {
     const chunks = [];
     for (let i = 0; i < array.length; i += chunkSize) {
@@ -103,17 +84,38 @@ export class CharacterListComponent implements OnInit {
     this.selectedCharacter = null;
   }
 
-  pageChanged(event: any): void {
-    this.pageIndex = event.pageIndex + 1; // +1 jer API stranice kreću od 1
-    this.characterService.getCharacters(this.pageIndex).subscribe(data => {
-      this.totalNumOfCharacters = data.info.count;
-      this.dataSource = new MatTableDataSource(data.results);
-      this.dataSource.paginator = this.paginator;
-      this.paginateCharacters();
-    });
-  }
-  
+  handlePageEvent(e: any) {
+    // if(e.pageIndex === 1)
+    //   e.pageIndex = 2;
+    this.pageSize = e.pageSize;
+    this.pageIndex = e.pageIndex;
 
+    // this.characters$ = this.characterService.getCharacters(this.pageIndex);//2
+    this.characters$ = this.characterService.getCharacters(this.pageIndex + 1);
+    this.characters$.subscribe(data => { //console.log: data, paginatedCharacters
+      console.log('data: '+ data);
+      
+      // this.paginatedCharacters = data;
+      this.paginatedCharacters = data.results; //msm da je ipak nepotrebno ovde to setovati kad ispod svakako pozivam paginateCharactters
+      // this.dataSource.filteredData = data.results;// ja
+      this.dataSource = new MatTableDataSource(data.results); //ja
+      // this.paginateCharacters();
+    });
+
+    // this.characterService.getCharacters(2);
+    // this.characterService.getCharacters(this.pageIndex);
+  }
+
+  // pageChanged(event: any): void {
+  //   this.pageIndex = event.pageIndex + 1; // +1 jer API stranice kreću od 1
+  //   this.characterService.getCharacters(this.pageIndex).subscribe(data => {
+  //     this.totalNumOfCharacters = data.info.count;
+  //     this.dataSource = new MatTableDataSource(data.results);
+  //     this.dataSource.paginator = this.paginator;
+  //     this.paginateCharacters();
+  //   });
+  // }
+  
   // pageChanged(event: any): void {
   //   this.pageIndex = event.pageIndex;
   //   this.paginateCharacters();
@@ -122,22 +124,8 @@ export class CharacterListComponent implements OnInit {
   private paginateCharacters(): void {
     const startIndex = this.pageIndex * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    this.paginatedCharacters = this.dataSource.data.slice(startIndex, endIndex);
+    this.paginatedCharacters = this.dataSource.data.slice(startIndex, endIndex); //console.log: startIndex, endIndex, this.paginatedCharacters
+    
   }
 
-  //ovo ne:
-  // loadCharacters(): void {
-  //   this.characterService.getCharacters(this.currentPage)
-  //     .subscribe(data => {
-  //       this.characters$ = data.results;
-  //       this.totalPages = data.info.pages;
-  //     });
-  // }
-
-  // onPageChange(page: number): void {
-  //   if (page >= 1 && page <= this.totalPages) {
-  //     this.currentPage = page;
-  //     this.loadCharacters();
-  //   }
-  // }
 }

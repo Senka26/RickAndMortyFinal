@@ -12,20 +12,7 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
-  // getCharacters(): Observable<any> {
-  //   return this.http.get(this.apiUrl).pipe(
-  //     map(response => response['results']), // Extract 'results' array from the response
-  //     tap(data => console.log('Characters data:', data)),
-  //     catchError(error => {
-  //       console.error('Error fetching characters:', error);
-  //       return throwError(() => new Error('Ovo je greška'));
-  //     })
-  //   );
-  // }
-
-  // II nacin:
   getCharacters(page?: number): Observable<any> { //ja dodala ? da bi i dalje radio prikaz karaktera na listi
-    if(!page) page = 1; //vidi da li ti treba
     const url = `${this.apiUrl}?page=${page}`;
     return this.http.get(url)
       .pipe(
@@ -37,16 +24,4 @@ export class CharacterService {
       );
   }
 
-//ok bez paginacije
-  // getCharacters(): Observable<any> {
-  //   // return this.http.get(this.apiUrl)
-  //   return this.http.get(this.apiUrl)
-  //   .pipe(
-  //     tap(data => console.log('Characters data:', data)),
-  //     catchError(error => {
-  //       console.error('Error fetching characters:', error);
-  //       return throwError(() => new Error('Ovo je greška'));
-  //     })
-  //   );
-  // }
 }

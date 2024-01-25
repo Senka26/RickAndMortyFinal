@@ -35,52 +35,22 @@
     <div class="button">
         <button mat-stroked-button>SEARCH</button>
     </div>
-
-    <!-- POMERI OO IZVAN NAVIGACIONOG MENIJA DA SE LEPSE POZICIONIRA PAGINACIJA, MOZDA DOLE U DESNI UGAO -->
-    <!-- ovo ne jer je bez angular material-a: -->
-    <!-- <div class="pagination">
-        <button (click)="onPageChange(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-        <span>Page {{ currentPage }} of {{ totalPages }}</span>
-        <button (click)="onPageChange(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
-    </div> -->
 </nav>
 
-<!-- obrisala pageSizeOptions jer je trazeno tacno 20 el. po stranici da se prikaze: [pageSizeOptions]="pageSizeOptions" -->
+<!-- button klasu mozda izvuci negde da se ne ponavlja -->
+<!-- type za svaki button? -->
+<!-- ========================================= -->
+
 <mat-paginator *ngIf="dataSource" [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
-               (page)="pageChanged($event)" showFirstLastButtons>
+    (page)="handlePageEvent($event)" showFirstLastButtons>
 </mat-paginator>
+
+<!-- <mat-paginator *ngIf="dataSource" [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
+               (page)="pageChanged($event)" showFirstLastButtons>
+</mat-paginator> -->
 
 <div *ngIf="dataSource" class="row">
   <div *ngFor="let character of paginatedCharacters" class="character-item" (click)="openModal(character)">
     <img [src]="character.image" alt="Character Image">
   </div>
 </div>
-
-<!-- ovo ne: -->
-<!-- <div *ngFor="let character of characters$ | async" class="character-item" (click)="openModal(character)">
-    <img [src]="character.image" alt="Character Image">
-</div> -->
-
-<!-- ok bez paginacije -->
-<!-- <div class="row">
-    <div *ngFor="let character of (characters$ | async)?.results" class="character-item" (click)="openModal(character)">
-        <img [src]="character.image" alt="Character Image">
-    </div>
-</div> -->
-
-
-<!-- <ng-container *ngIf="characters$ | async as characters"> -->
-
-    <!-- ok bez paginacije i bez ng-containera -->
-    <!-- <div class="row">
-        <div *ngFor="let character of (characters$ | async)?.results" class="character-item" (click)="openModal(character)">
-            <img [src]="character.image" alt="Character Image">
-        </div>
-    </div> -->
-<!-- </ng-container> -->
-
-<!-- vidi da li bas ovde ovu liniju: -->
-<!-- <app-character-info *ngIf="selectedCharacter" [character]="selectedCharacter" (closeModalEvent)="closeModal()"></app-character-info> -->
-
-<!-- button klasu mozda izvuci negde da se ne ponavlja -->
-<!-- type za svaki button? -->

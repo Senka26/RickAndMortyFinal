@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>{{ data.name }}</h2>
+<div mat-dialog-content>
+  <img [src]="data.image" alt="Character Image">
+  <p>Gender: {{ data.gender }}</p>
+  <p>Species: {{ data.species }}</p>
+  <p>Location Name: {{ data.location?.name }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="closeModal()">Cancel</button>
+</div>
+  

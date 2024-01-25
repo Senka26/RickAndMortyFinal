@@ -12,8 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { CharacterListComponent } from './header/character-list/character-list.component';
-import { CharacterItemComponent } from './header/character-list/character-item/character-item.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CharacterInfoComponent } from './header/character-list/character-info/character-info.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HeaderComponent,
     CharacterListComponent,
-    CharacterItemComponent
+    CharacterInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -30,9 +30,12 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
-  providers: [],
+  // radi i bez ovoga, mozda obr:
+  exports: [
+    MaterialModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

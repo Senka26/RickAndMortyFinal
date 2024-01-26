@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favourites',
@@ -11,7 +12,7 @@ export class FavouritesComponent implements OnInit {
   favouriteCharacters: any[] = [];
   dataSource: MatTableDataSource<any>;
 
-  constructor() { }
+  constructor(private router: Router,) { }
 
   ngOnInit(): void {
     const favouritesFromStorage = localStorage.getItem('favouriteCharacters');
@@ -21,6 +22,8 @@ export class FavouritesComponent implements OnInit {
     this.dataSource = new MatTableDataSource(this.favouriteCharacters);
   }
 
-  
+  navigateToHeader() {
+    this.router.navigate(['/header']);
+  }
 
 }

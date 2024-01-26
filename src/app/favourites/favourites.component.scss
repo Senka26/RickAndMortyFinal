@@ -1,14 +1,23 @@
-h1 {
+.header {
+    display: flex;
+    align-items: center;
     margin: 1vw;
-    font-size: 2em;
-    font-weight: bold;
+  
+    button {
+      margin-right: 1vw;
+    }
+  
+    h1 {
+      margin: 0;
+      font-size: 2em;
+      font-weight: bold;
+    }
 }
-
+  
 .row {
-    margin-bottom: 10px;
     text-align: center;
 }
-
+  
 .character-item {
     margin: 0 5px;
     display: inline-block;

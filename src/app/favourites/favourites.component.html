@@ -1,7 +1,10 @@
-<h1>Favourites List</h1>
-
-<div  class="row">
+<div class="header">
+    <button mat-stroked-button (click)="navigateToHeader()">Back</button>
+    <h1>Favourites List</h1>
+  </div>
+  
+  <div class="row">
     <div *ngFor="let character of favouriteCharacters" class="character-item">
       <img [src]="character.image" alt="Character Image">
     </div>
-</div>
+  </div>

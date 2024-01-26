@@ -33,7 +33,10 @@
         </mat-form-field>
     </div>
     <div class="button">
-        <button mat-stroked-button>SEARCH</button>
+        <!-- <button mat-stroked-button>SEARCH</button> -->
+        <mat-form-field>
+            <input matInput placeholder="SEARCH" [(ngModel)]="searchFilter" (input)="search()">
+        </mat-form-field>
     </div>
 </nav>
 

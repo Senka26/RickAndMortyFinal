@@ -36,7 +36,7 @@ export class CharacterListComponent implements OnInit {
     this.characters$.subscribe(data => {
       this.totalNumOfCharacters = data.info.count;
       this.dataSource = new MatTableDataSource(data.results);
-      this.paginateCharacters();
+      this.resetList();
     });
   }
 
@@ -58,14 +58,18 @@ export class CharacterListComponent implements OnInit {
 
     this.characters$ = this.characterService.getCharacters(this.pageIndex + 1);
     this.characters$.subscribe(data => {
+      this.dataSource.data = data.results;
       this.paginatedCharacters = data.results;
     });
   }
 
-  private paginateCharacters(): void {
-    const startIndex = this.pageIndex * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    this.paginatedCharacters = this.dataSource.data.slice(startIndex, endIndex);
+  private resetList(): void {
+    this.paginatedCharacters = this.dataSource.data;
+  }
+
+  search() {
+    this.resetList();
+    this.paginatedCharacters = this.paginatedCharacters.filter(x => x.name.toLowerCase().includes(this.searchFilter.toLowerCase()));
   }
 
 }

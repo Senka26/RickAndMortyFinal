@@ -33,7 +33,6 @@
         </mat-form-field>
     </div>
     <div class="button">
-        <!-- <button mat-stroked-button>SEARCH</button> -->
         <mat-form-field>
             <input matInput placeholder="SEARCH" [(ngModel)]="searchFilter" (input)="search()">
         </mat-form-field>
@@ -43,11 +42,11 @@
 <!-- button klasu mozda izvuci negde da se ne ponavlja -->
 <!-- type za svaki button? -->
 
-<mat-paginator  [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
+<mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
     (page)="handlePageEvent($event)" showFirstLastButtons>
 </mat-paginator>
 
-<div  class="row">
+<div class="row">
   <div *ngFor="let character of paginatedCharacters" class="character-item" (click)="openModal(character)">
     <img [src]="character.image" alt="Character Image">
   </div>

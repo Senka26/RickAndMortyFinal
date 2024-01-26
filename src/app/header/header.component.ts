@@ -17,4 +17,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
+  navigateToFavourites() {
+    this.router.navigate(['/favourites']);
+  }
+
 }

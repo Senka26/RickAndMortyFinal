@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Edit Character</h2>
+<div mat-dialog-content>
+  <form #editForm="ngForm" (ngSubmit)="saveChanges()">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="editedCharacter.name" name="name" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Status</mat-label>
+        <mat-select [(ngModel)]="editedCharacter.status" name="status" required>
+          <mat-option value="alive">Alive</mat-option>
+          <mat-option value="dead">Dead</mat-option>
+          <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Species" [(ngModel)]="editedCharacter.species" name="species" required>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select [(ngModel)]="editedCharacter.gender" name="gender" required>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="genderless">Genderless</mat-option>
+        <mat-option value="unknown">Unknown</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">Save Changes</button>
+      <button mat-button mat-dialog-close>Cancel</button>
+    </div>
+  </form>
+</div>

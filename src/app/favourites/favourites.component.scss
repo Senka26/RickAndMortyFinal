@@ -22,3 +22,17 @@
     margin: 0 5px;
     display: inline-block;
 }
+
+.character-content {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.character-content img {
+  margin-right: 5px;
+}
+
+.character-content button {
+  margin-top: auto;
+}

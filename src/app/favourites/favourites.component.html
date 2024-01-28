@@ -1,10 +1,13 @@
 <div class="header">
-    <button mat-stroked-button (click)="navigateToHeader()">Back</button>
-    <h1>Favourites List</h1>
-  </div>
+  <button mat-stroked-button (click)="navigateToHeader()">Back</button>
+  <h1>Favourites List</h1>
+</div>
   
-  <div class="row">
-    <div *ngFor="let character of favouriteCharacters" class="character-item">
+<div class="row">
+  <div *ngFor="let character of favouriteCharacters" class="character-item">
+    <div class="character-content">
       <img [src]="character.image" alt="Character Image">
+      <button mat-stroked-button (click)="openEditModal(character)">Edit</button>
     </div>
   </div>
+</div>

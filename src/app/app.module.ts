@@ -15,6 +15,7 @@ import { CharacterListComponent } from './header/character-list/character-list.c
 import { HttpClientModule } from '@angular/common/http';
 import { CharacterInfoComponent } from './header/character-list/character-info/character-info.component';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { EditCharacterComponent } from './favourites/edit-character/edit-character.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FavouritesComponent } from './favourites/favourites.component';
     HeaderComponent,
     CharacterListComponent,
     CharacterInfoComponent,
-    FavouritesComponent
+    FavouritesComponent,
+    EditCharacterComponent
   ],
   imports: [
     BrowserModule,

@@ -33,11 +33,7 @@ export class CharacterListComponent implements OnInit {
 
   ngOnInit(): void {
     this.characters$ = this.characterService.getCharacters(1);
-    this.characters$.subscribe(data => {
-      this.totalNumOfCharacters = data.info.count;
-      this.dataSource = new MatTableDataSource(data.results);
-      this.resetList();
-    });
+    this.updateList();
   }
 
   openModal(character: any) {
@@ -56,20 +52,46 @@ export class CharacterListComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
+    if (this.nameFilter !== '') {
+      this.filterCharacters();
+      return;
+    }
     this.characters$ = this.characterService.getCharacters(this.pageIndex + 1);
-    this.characters$.subscribe(data => {
-      this.dataSource.data = data.results;
-      this.paginatedCharacters = data.results;
+    this.updateList();
+  }
+
+  filterCharacters() {
+    this.characters$ = this.characterService.searchCharacters(this.pageIndex + 1, this.nameFilter);
+    this.updateList();
+  }
+  
+  searchCharacters() {
+    this.paginatedCharacters = this.dataSource.data;
+    this.paginatedCharacters = this.paginatedCharacters.filter(x => 
+      x.name.toLowerCase().includes(this.searchFilter.toLowerCase()) ||
+      x.gender.toLowerCase() === this.searchFilter.toLowerCase() ||
+      x.species.toLowerCase().includes(this.searchFilter.toLowerCase()) ||
+      x.location.name.toLowerCase().includes(this.searchFilter.toLowerCase())
+    );
+  }
+  
+  updateList() {
+    this.characters$.subscribe({
+      next: this.handleResponse.bind(this),
+      error: this.handleError.bind(this)
     });
   }
-
-  private resetList(): void {
-    this.paginatedCharacters = this.dataSource.data;
+  
+  private handleResponse(data) {
+    this.totalNumOfCharacters = data.info.count;
+    if (this.dataSource === undefined) //skrati
+        this.dataSource = new MatTableDataSource(data.results);
+    this.dataSource.data = data.results;
+    this.paginatedCharacters = data.results;
   }
-
-  search() {
-    this.resetList();
-    this.paginatedCharacters = this.paginatedCharacters.filter(x => x.name.toLowerCase().includes(this.searchFilter.toLowerCase()));
+  
+  private handleError(error) { //error obr?
+    this.dataSource.data = null;
+    this.paginatedCharacters = null;
   }
-
 }

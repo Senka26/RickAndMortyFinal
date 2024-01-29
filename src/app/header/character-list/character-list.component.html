@@ -2,7 +2,7 @@
     <div class="button">
         <mat-form-field>
             <!-- (input)="applyFilters()" dodaj -->
-            <input matInput placeholder="NAME" [(ngModel)]="nameFilter">
+            <input matInput placeholder="NAME" [(ngModel)]="nameFilter" (input)="filterCharacters()">
         </mat-form-field>
     </div>
     <div class="button">
@@ -34,7 +34,7 @@
     </div>
     <div class="button">
         <mat-form-field>
-            <input matInput placeholder="SEARCH" [(ngModel)]="searchFilter" (input)="search()">
+            <input matInput placeholder="SEARCH" [(ngModel)]="searchFilter" (input)="searchCharacters()">
         </mat-form-field>
     </div>
 </nav>

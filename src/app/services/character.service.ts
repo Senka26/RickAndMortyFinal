@@ -22,5 +22,16 @@ export class CharacterService {
         })
       );
   }
+  
+  searchCharacters(page?: number, name?: string): Observable<any> {
+    const url = `${this.apiUrl}?page=${page}&name=${name}`;
+    return this.http.get(url)
+      .pipe(
+        catchError(error => {
+          console.error('Error fetching characters:', error);
+          return throwError(() => new Error('Ovo je greška'));
+        })
+      );
+  }
 
 }

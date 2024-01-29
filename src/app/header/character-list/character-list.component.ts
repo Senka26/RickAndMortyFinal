@@ -12,7 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class CharacterListComponent implements OnInit {
 
-  characters$: Observable<any>;
+  characters: Observable<any>;
   selectedCharacter: any;
 
   nameFilter: string = '';
@@ -32,7 +32,7 @@ export class CharacterListComponent implements OnInit {
   constructor(private characterService: CharacterService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.characters$ = this.characterService.getCharacters(1);
+    this.characters = this.characterService.getCharacters(this.pageIndex + 1);
     this.updateList();
   }
 
@@ -52,47 +52,12 @@ export class CharacterListComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
-    if (this.nameFilter !== '') {
-      this.filterByName();
+    if (this.nameFilter !== '' || this.statusFilter !== '' || this.speciesFilter !== '' || this.genderFilter !== '') {
+      this.updateList();
       return;
     }
 
-    if (this.statusFilter !== '') {
-      this.filterByStatus();
-      return;
-    }
-
-    if (this.speciesFilter !== '') {
-      this.filterBySpecies();
-      return;
-    }
-
-    if (this.genderFilter !== '') {
-      this.filterByGender();
-      return;
-    }
-
-    this.characters$ = this.characterService.getCharacters(this.pageIndex + 1);
-    this.updateList();
-  }
-
-  filterByName() {
-    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.nameFilter);
-    this.updateList();
-  }
-
-  filterByStatus() {
-    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.statusFilter);
-    this.updateList();
-  }
-
-  filterBySpecies() {
-    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.speciesFilter);
-    this.updateList();
-  }
-
-  filterByGender() {
-    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.genderFilter);
+    this.characters = this.characterService.getCharacters(this.pageIndex + 1);
     this.updateList();
   }
   
@@ -107,7 +72,7 @@ export class CharacterListComponent implements OnInit {
   }
   
   updateList() {
-    this.characters$ = this.characterService.filterCharacters(
+    this.characters = this.characterService.getCharacters(
       this.pageIndex + 1,
       this.nameFilter,
       this.statusFilter,
@@ -115,7 +80,7 @@ export class CharacterListComponent implements OnInit {
       this.genderFilter
     );
 
-    this.characters$.subscribe({
+    this.characters.subscribe({
       next: this.handleResponse.bind(this),
       error: this.handleError.bind(this)
     });
@@ -123,13 +88,13 @@ export class CharacterListComponent implements OnInit {
   
   private handleResponse(data) {
     this.totalNumOfCharacters = data.info.count;
-    if (this.dataSource === undefined) //skrati
+    if (!this.dataSource)
         this.dataSource = new MatTableDataSource(data.results);
     this.dataSource.data = data.results;
     this.paginatedCharacters = data.results;
   }
   
-  private handleError(error) { //error obr?
+  private handleError() {
     this.dataSource.data = null;
     this.paginatedCharacters = null;
   }

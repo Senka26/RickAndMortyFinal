@@ -19,8 +19,18 @@
 }
   
 .character-item {
-    margin: 0 5px;
-    display: inline-block;
+  margin: 0 5px;
+  display: inline-block;
+
+  img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  img:hover {
+    transform: scale(1.1);
+    filter: brightness(60%);
+  }
 }
 
 .character-content {

@@ -10,19 +10,8 @@ export class CharacterService {
   private apiUrl = 'https://rickandmortyapi.com/api/character';
 
   constructor(private http: HttpClient) { }
-
-  getCharacters(page?: number): Observable<any> {
-    const url = `${this.apiUrl}?page=${page}`;
-    return this.http.get(url)
-      .pipe(
-        catchError(error => {
-          console.error('Error fetching characters:', error);
-          return throwError(() => new Error('Ovo je greška'));
-        })
-      );
-  }
   
-  filterCharacters(page?: number, name?: string, status?: string, species?: string, gender?: string): Observable<any> {
+  getCharacters(page?: number, name?: string, status?: string, species?: string, gender?: string): Observable<any> {
     let url = `${this.apiUrl}?page=${page}`;
   
     if (name) {
@@ -48,6 +37,6 @@ export class CharacterService {
           return throwError(() => new Error('Ovo je greška'));
         })
       );
-  }  
+  }
 
 }

@@ -27,7 +27,7 @@ export class EditCharacterComponent implements OnInit {
 
       const index = favouriteCharacters.findIndex((char) => char.id === this.editedCharacter.id);
 
-      if (index !== -1) { //if(index)
+      if(index){
         favouriteCharacters[index].name = this.editedCharacter.name;
         favouriteCharacters[index].status = this.editedCharacter.status;
         favouriteCharacters[index].species = this.editedCharacter.species;

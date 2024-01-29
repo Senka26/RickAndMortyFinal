@@ -1,12 +1,12 @@
 <nav class="row">
     <div class="button">
         <mat-form-field>
-            <input matInput placeholder="NAME" [(ngModel)]="nameFilter" (input)="filterByName()">
+            <input matInput placeholder="NAME" [(ngModel)]="nameFilter" (input)="updateList()">
         </mat-form-field>
     </div>
     <div class="button">
         <mat-form-field>
-            <mat-select placeholder="STATUS" [(ngModel)]="statusFilter" (selectionChange)="filterByStatus()">
+            <mat-select placeholder="STATUS" [(ngModel)]="statusFilter" (selectionChange)="updateList()">
                 <mat-option value="alive">Alive</mat-option>
                 <mat-option value="dead">Dead</mat-option>
                 <mat-option value="unknown">Unknown</mat-option>
@@ -15,12 +15,12 @@
     </div>
     <div class="button">
         <mat-form-field>
-            <input matInput placeholder="SPECIES" [(ngModel)]="speciesFilter" (input)="filterBySpecies()">
+            <input matInput placeholder="SPECIES" [(ngModel)]="speciesFilter" (input)="updateList()">
         </mat-form-field>
     </div>
     <div class="button">
         <mat-form-field>
-            <mat-select placeholder="GENDER" [(ngModel)]="genderFilter" (selectionChange)="filterByGender()">
+            <mat-select placeholder="GENDER" [(ngModel)]="genderFilter" (selectionChange)="updateList()">
                 <mat-option value="female">Female</mat-option>
                 <mat-option value="male">Male</mat-option>
                 <mat-option value="genderless">Genderless</mat-option>
@@ -34,9 +34,6 @@
         </mat-form-field>
     </div>
 </nav>
-
-<!-- button klasu mozda izvuci negde da se ne ponavlja -->
-<!-- type za svaki button? -->
 
 <mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
     (page)="handlePageEvent($event)" showFirstLastButtons>

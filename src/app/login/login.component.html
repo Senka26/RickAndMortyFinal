@@ -12,9 +12,13 @@
                 </mat-form-field>
             </p>
 
-            <p *ngIf="error" class="error">
+            <!-- <p *ngIf="error" class="error">
                 {{ error }}
-            </p>
+            </p> -->
+
+            <mat-error *ngIf="error" class="error">
+                {{ error }}
+            </mat-error>
 
             <div class="button">
                 <button type="submit" mat-button class="button-style">Login</button>

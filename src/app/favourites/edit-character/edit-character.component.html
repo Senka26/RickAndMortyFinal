@@ -1,11 +1,14 @@
 <h2 mat-dialog-title>Edit Character</h2>
-<div mat-dialog-content>
+<div mat-dialog-content *ngIf="editedCharacter">
   <form #editForm="ngForm" (ngSubmit)="saveChanges()">
-    <mat-form-field>
-      <input matInput placeholder="Name" [(ngModel)]="editedCharacter.name" name="name" required>
-    </mat-form-field>
+    <div class="criteria">
+      <mat-form-field>
+        <input matInput placeholder="Name" [(ngModel)]="editedCharacter.name" name="name" required>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
+    <div class="criteria">
+      <mat-form-field>
         <mat-label>Status</mat-label>
         <mat-select [(ngModel)]="editedCharacter.status" name="status" required>
           <mat-option value="alive">Alive</mat-option>
@@ -13,20 +16,25 @@
           <mat-option value="unknown">Unknown</mat-option>
         </mat-select>
       </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <input matInput placeholder="Species" [(ngModel)]="editedCharacter.species" name="species" required>
-    </mat-form-field>
+    <div class="criteria">
+      <mat-form-field>
+        <input matInput placeholder="Species" [(ngModel)]="editedCharacter.species" name="species" required>
+      </mat-form-field>
+    </div>
 
-    <mat-form-field>
-      <mat-label>Gender</mat-label>
-      <mat-select [(ngModel)]="editedCharacter.gender" name="gender" required>
-        <mat-option value="female">Female</mat-option>
-        <mat-option value="male">Male</mat-option>
-        <mat-option value="genderless">Genderless</mat-option>
-        <mat-option value="unknown">Unknown</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="criteria">
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select [(ngModel)]="editedCharacter.gender" name="gender" required>
+          <mat-option value="female">Female</mat-option>
+          <mat-option value="male">Male</mat-option>
+          <mat-option value="genderless">Genderless</mat-option>
+          <mat-option value="unknown">Unknown</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
 
     <div class="buttons">
       <button mat-raised-button color="primary" type="submit" [disabled]="editForm.invalid">Save Changes</button>

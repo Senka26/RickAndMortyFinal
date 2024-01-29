@@ -39,7 +39,7 @@ export class FavouritesComponent implements OnInit {
       if (editedCharacter) {
         const index = this.favouriteCharacters.findIndex((char) => char.id === editedCharacter.id);
   
-        if (index !== -1) { //if(index)?
+        if(index) {
           this.favouriteCharacters[index] = { ...editedCharacter };
           localStorage.setItem('favouriteCharacters', JSON.stringify(this.favouriteCharacters));
         }

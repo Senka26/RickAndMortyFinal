@@ -53,15 +53,46 @@ export class CharacterListComponent implements OnInit {
     this.pageIndex = e.pageIndex;
 
     if (this.nameFilter !== '') {
-      this.filterCharacters();
+      this.filterByName();
       return;
     }
+
+    if (this.statusFilter !== '') {
+      this.filterByStatus();
+      return;
+    }
+
+    if (this.speciesFilter !== '') {
+      this.filterBySpecies();
+      return;
+    }
+
+    if (this.genderFilter !== '') {
+      this.filterByGender();
+      return;
+    }
+
     this.characters$ = this.characterService.getCharacters(this.pageIndex + 1);
     this.updateList();
   }
 
-  filterCharacters() {
-    this.characters$ = this.characterService.searchCharacters(this.pageIndex + 1, this.nameFilter);
+  filterByName() {
+    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.nameFilter);
+    this.updateList();
+  }
+
+  filterByStatus() {
+    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.statusFilter);
+    this.updateList();
+  }
+
+  filterBySpecies() {
+    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.speciesFilter);
+    this.updateList();
+  }
+
+  filterByGender() {
+    this.characters$ = this.characterService.filterCharacters(this.pageIndex + 1, this.genderFilter);
     this.updateList();
   }
   
@@ -76,6 +107,14 @@ export class CharacterListComponent implements OnInit {
   }
   
   updateList() {
+    this.characters$ = this.characterService.filterCharacters(
+      this.pageIndex + 1,
+      this.nameFilter,
+      this.statusFilter,
+      this.speciesFilter,
+      this.genderFilter
+    );
+
     this.characters$.subscribe({
       next: this.handleResponse.bind(this),
       error: this.handleError.bind(this)

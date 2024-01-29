@@ -1,14 +1,12 @@
 <nav class="row">
     <div class="button">
         <mat-form-field>
-            <!-- (input)="applyFilters()" dodaj -->
-            <input matInput placeholder="NAME" [(ngModel)]="nameFilter" (input)="filterCharacters()">
+            <input matInput placeholder="NAME" [(ngModel)]="nameFilter" (input)="filterByName()">
         </mat-form-field>
     </div>
     <div class="button">
         <mat-form-field>
-            <!-- (selectionChange)="applyFilters()" -->
-            <mat-select placeholder="STATUS" [(ngModel)]="statusFilter">
+            <mat-select placeholder="STATUS" [(ngModel)]="statusFilter" (selectionChange)="filterByStatus()">
                 <mat-option value="alive">Alive</mat-option>
                 <mat-option value="dead">Dead</mat-option>
                 <mat-option value="unknown">Unknown</mat-option>
@@ -17,14 +15,12 @@
     </div>
     <div class="button">
         <mat-form-field>
-            <!-- (input)="applyFilters()" -->
-            <input matInput placeholder="SPECIES" [(ngModel)]="speciesFilter">
+            <input matInput placeholder="SPECIES" [(ngModel)]="speciesFilter" (input)="filterBySpecies()">
         </mat-form-field>
     </div>
     <div class="button">
         <mat-form-field>
-            <!-- (selectionChange)="applyFilters()" -->
-            <mat-select placeholder="GENDER" [(ngModel)]="genderFilter">
+            <mat-select placeholder="GENDER" [(ngModel)]="genderFilter" (selectionChange)="filterByGender()">
                 <mat-option value="female">Female</mat-option>
                 <mat-option value="male">Male</mat-option>
                 <mat-option value="genderless">Genderless</mat-option>

@@ -8,7 +8,6 @@ import { Observable, catchError, throwError } from 'rxjs';
 export class CharacterService {
 
   private apiUrl = 'https://rickandmortyapi.com/api/character';
-  // private apiUrl = 'https://rickandmortyapi.com/api/character/?page=18';
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +22,25 @@ export class CharacterService {
       );
   }
   
-  searchCharacters(page?: number, name?: string): Observable<any> {
-    const url = `${this.apiUrl}?page=${page}&name=${name}`;
+  filterCharacters(page?: number, name?: string, status?: string, species?: string, gender?: string): Observable<any> {
+    let url = `${this.apiUrl}?page=${page}`;
+  
+    if (name) {
+      url += `&name=${name}`;
+    }
+  
+    if (status) {
+      url += `&status=${status}`;
+    }
+  
+    if (species) {
+      url += `&species=${species}`;
+    }
+  
+    if (gender) {
+      url += `&gender=${gender}`;
+    }
+  
     return this.http.get(url)
       .pipe(
         catchError(error => {
@@ -32,6 +48,6 @@ export class CharacterService {
           return throwError(() => new Error('Ovo je greška'));
         })
       );
-  }
+  }  
 
 }

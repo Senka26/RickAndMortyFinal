@@ -17,6 +17,8 @@ export class EditCharacterComponent implements OnInit {
 
   ngOnInit(): void {
     this.editedCharacter = { ...this.data.character };
+    console.log('this.editedCharacter', this.editedCharacter);
+    
   }
 
   saveChanges(): void {

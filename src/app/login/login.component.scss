@@ -7,6 +7,13 @@
 .mat-form-field {
   width: 100%;
   min-width: 300px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+mat-form-field input {
+  margin-top: -6px;
 }
 
 mat-card {
@@ -18,10 +25,6 @@ mat-card-content {
   display: flex;
   justify-content: center;
 }
-
-// input::placeholder {
-//   font-style: italic;
-// }
 
 .mat-input-wrapper {
   display: flex;
@@ -40,13 +43,18 @@ input {
 .error {
   padding: 16px;
   width: 300px;
-  color: white;
-  background-color: red;
+  color: #FFFFFF;
+  background-color: #ff5252;
+}
+
+.mat-error {
+  margin-bottom: 10px;
 }
 
 .button {
   display: flex;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .button-style {

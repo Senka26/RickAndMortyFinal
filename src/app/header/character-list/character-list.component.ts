@@ -29,7 +29,9 @@ export class CharacterListComponent implements OnInit {
 
   dataSource: MatTableDataSource<any>;
 
-  constructor(private characterService: CharacterService, public dialog: MatDialog) { }
+  constructor(
+    private characterService: CharacterService,
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.characters = this.characterService.getCharacters(this.pageIndex + 1);
@@ -39,7 +41,7 @@ export class CharacterListComponent implements OnInit {
   openModal(character: any) {
     this.selectedCharacter = character;
     this.dialog.open(CharacterInfoComponent, {
-      width: '350px',
+      minWidth: '300px',
       data: character
     });
   }

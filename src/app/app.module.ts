@@ -36,7 +36,6 @@ import { EditCharacterComponent } from './favourites/edit-character/edit-charact
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  // radi i bez ovoga, mozda obr:
   exports: [
     MaterialModule
   ],

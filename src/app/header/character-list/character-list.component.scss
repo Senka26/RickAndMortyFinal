@@ -54,12 +54,12 @@ nav {
 
 @media only screen and (min-width: 601px) { // tablet
     .mat-form-field {
-      width: 18vw !important;
+      width: 18vw;
     }
 }
 
 @media only screen and (min-width: 1281px) { // desktop
     .mat-form-field {
-      width: 15vw !important;
+      width: 15vw;
     }
 }

@@ -16,12 +16,10 @@ export class EditCharacterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.editedCharacter = { ...this.data.character };
-    console.log('this.editedCharacter', this.editedCharacter);
-    
+    this.editedCharacter = { ...this.data.character };    
   }
 
-  saveChanges(): void {
+  saveChanges() {
     const favouritesFromStorage = localStorage.getItem('favouriteCharacters');
 
     if (favouritesFromStorage) {

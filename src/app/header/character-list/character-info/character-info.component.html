@@ -4,14 +4,9 @@
   <p>Gender: {{ data.gender }}</p>
   <p>Species: {{ data.species }}</p>
   <p>Location Name: {{ data.location?.name }}</p>
-  <div mat-dialog-actions>
-    <button mat-button (click)="addToFavourites()">Add to favourites</button>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="removeFromFavourites()">Remove from favourites</button>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-button (click)="closeModal()">Cancel</button>
-  </div>
+  <div class="button-container">
+  <button mat-stroked-button (click)="addToFavourites()">+ Favourites</button>
+  <button mat-stroked-button (click)="removeFromFavourites()">- Favourites</button>
+  <button mat-stroked-button (click)="closeModal()">Cancel</button>
 </div>
-  
+</div>

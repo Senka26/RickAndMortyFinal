@@ -30,7 +30,7 @@ export class FavouritesComponent implements OnInit {
     this.router.navigate(['/header']);
   }
 
-  openEditModal(character: any): void {
+  openEditModal(character: any) {
     const dialogRef = this.dialog.open(EditCharacterComponent, {
       data: { character },
     });

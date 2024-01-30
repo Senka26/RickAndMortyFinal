@@ -23,3 +23,25 @@ nav span {
 nav button {
     margin-left: 1vw;
 }
+
+mat-sidenav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+  
+.example-sidenav-content {
+    display: flex;
+    height: 100%;
+}
+  
+.example-sidenav {
+    padding: 20px;
+    background-color: #C1E1C1;
+}
+
+.button {
+    background-color: #f4f4f4;
+}

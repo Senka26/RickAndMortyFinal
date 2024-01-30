@@ -1,8 +1,20 @@
-<nav>
-    <img src="\assets\random-task.svg" alt="Logo">
-    <span>Rick&Morty Character List</span>
-    <button mat-stroked-button (click)="navigateToFavourites()">Favourites</button>
-    <button mat-stroked-button (click)="logout()">Log out</button>
-</nav>
+<mat-sidenav-container autosize>
+    <mat-sidenav *ngIf="showSidenav" #drawer class="example-sidenav" mode="side" position="end">
+        <p><button mat-stroked-button (click)="navigateToFavourites()" class="button">Favourites</button></p>
+        <p><button mat-stroked-button (click)="logout()" class="button">Log out</button></p>
+    </mat-sidenav>
 
-<app-character-list></app-character-list>
+    <div>
+        <nav>
+            <img src="\assets\random-task.svg" alt="Logo">
+            <span>Rick&Morty Character List</span>
+            <button *ngIf="showToggle" type="button" mat-icon-button (click)="toggleSidenav()">
+                <mat-icon>{{ 'menu' }}</mat-icon>
+            </button> 
+            <button *ngIf="showFavouritesAndLogout" mat-stroked-button (click)="navigateToFavourites()">Favourites</button>
+            <button *ngIf="showFavouritesAndLogout" mat-stroked-button (click)="logout()">Log out</button>
+        </nav>
+
+        <app-character-list></app-character-list>
+    </div>
+</mat-sidenav-container>

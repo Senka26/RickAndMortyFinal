@@ -14,6 +14,7 @@
 
 mat-form-field input {
   margin-top: -6px;
+  text-indent: 5px;
 }
 
 mat-card {
@@ -29,10 +30,6 @@ mat-card-content {
 .mat-input-wrapper {
   display: flex;
   align-items: center;
-}
-
-.mat-input-element::placeholder {
-  font-style: italic;
 }
 
 input {

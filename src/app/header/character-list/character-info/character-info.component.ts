@@ -9,8 +9,6 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 export class CharacterInfoComponent implements OnInit {
 
-  @Input() character: any; //mozda obr
-
   favouriteCharacters: any[] = [];
   dataSource: MatTableDataSource<any>;
 

@@ -10,6 +10,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
+  @Input() error: string | null;
+  @Output() submitEM = new EventEmitter();
+
   user: object = {
     name: "rick",
     password: "morty"
@@ -42,8 +45,4 @@ export class LoginComponent implements OnInit {
       this.error = "Error: Form is not valid.";
     }
   }
-
-  @Input() error: string | null;
-
-  @Output() submitEM = new EventEmitter();
 }

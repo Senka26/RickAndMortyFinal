@@ -3,7 +3,6 @@
         <p><button mat-stroked-button (click)="navigateToFavourites()" class="button">Favourites</button></p>
         <p><button mat-stroked-button (click)="logout()" class="button">Log out</button></p>
     </mat-sidenav>
-
     <div>
         <nav>
             <img src="\assets\random-task.svg" alt="Logo">
@@ -14,7 +13,6 @@
             <button *ngIf="showFavouritesAndLogout" mat-stroked-button (click)="navigateToFavourites()">Favourites</button>
             <button *ngIf="showFavouritesAndLogout" mat-stroked-button (click)="logout()">Log out</button>
         </nav>
-
         <app-character-list></app-character-list>
     </div>
 </mat-sidenav-container>

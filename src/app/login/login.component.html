@@ -11,11 +11,9 @@
                   <input type="password" matInput [placeholder]="(password === '') ? 'Password' : ''" formControlName="password" [(ngModel)]="password">
                 </mat-form-field>
             </p>
-
             <mat-error *ngIf="error" class="error">
                 {{ error }}
             </mat-error>
-
             <div class="button">
                 <button type="submit" mat-button class="button-style">Login</button>
             </div>

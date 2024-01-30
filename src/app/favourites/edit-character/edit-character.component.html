@@ -6,7 +6,6 @@
         <input matInput placeholder="Name" [(ngModel)]="editedCharacter.name" name="name" required>
       </mat-form-field>
     </div>
-
     <div class="criteria">
       <mat-form-field>
         <mat-label>Status</mat-label>
@@ -17,13 +16,11 @@
         </mat-select>
       </mat-form-field>
     </div>
-
     <div class="criteria">
       <mat-form-field>
         <input matInput placeholder="Species" [(ngModel)]="editedCharacter.species" name="species" required>
       </mat-form-field>
     </div>
-
     <div class="criteria">
       <mat-form-field>
         <mat-label>Gender</mat-label>
@@ -35,7 +32,6 @@
         </mat-select>
       </mat-form-field>
     </div>
-
     <div class="buttons">
       <button mat-stroked-button type="submit" [disabled]="editForm.invalid">Save Changes</button>
     </div>

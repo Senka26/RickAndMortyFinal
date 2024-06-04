@@ -39,5 +39,6 @@ export class EditCharacterComponent implements OnInit {
 
     this.dialogRef.close(this.editedCharacter);
   }
+  // test
 
 }

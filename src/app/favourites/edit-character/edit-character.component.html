@@ -3,7 +3,13 @@
   <form #editForm="ngForm" (ngSubmit)="saveChanges()">
     <div class="criteria">
       <mat-form-field>
-        <input matInput placeholder="Name" [(ngModel)]="editedCharacter.name" name="name" required>
+        <input
+          matInput
+          placeholder="Name"
+          [(ngModel)]="editedCharacter.name"
+          name="name"
+          required
+        />
       </mat-form-field>
     </div>
     <div class="criteria">
@@ -18,7 +24,13 @@
     </div>
     <div class="criteria">
       <mat-form-field>
-        <input matInput placeholder="Species" [(ngModel)]="editedCharacter.species" name="species" required>
+        <input
+          matInput
+          placeholder="Species"
+          [(ngModel)]="editedCharacter.species"
+          name="species"
+          required
+        />
       </mat-form-field>
     </div>
     <div class="criteria">
@@ -33,7 +45,9 @@
       </mat-form-field>
     </div>
     <div class="buttons">
-      <button mat-stroked-button type="submit" [disabled]="editForm.invalid">Save Changes</button>
+      <button mat-stroked-button type="submit" [disabled]="editForm.invalid">
+        Save Changes
+      </button>
     </div>
     <div class="buttons">
       <button mat-stroked-button mat-dialog-close>Cancel</button>

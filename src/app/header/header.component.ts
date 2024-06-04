@@ -6,10 +6,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-
   showToggle = false;
   showFavouritesAndLogout = false;
   showSidenav = false;
@@ -17,16 +16,17 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private breakpointObserver: BreakpointObserver) { }
+    private breakpointObserver: BreakpointObserver
+  ) {}
 
   ngOnInit(): void {
-    this.breakpointObserver.observe([
-      '(max-width: 600px)'
-    ]).subscribe(result => {
-      this.showToggle = result.matches;
-      this.showFavouritesAndLogout = !result.matches;
-      this.showSidenav = result.matches;
-    });
+    this.breakpointObserver
+      .observe(['(max-width: 600px)'])
+      .subscribe((result) => {
+        this.showToggle = result.matches;
+        this.showFavouritesAndLogout = !result.matches;
+        this.showSidenav = result.matches;
+      });
   }
 
   logout() {

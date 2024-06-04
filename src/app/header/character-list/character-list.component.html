@@ -1,46 +1,78 @@
 <nav class="row">
-    <div class="button">
-        <mat-form-field>
-            <input matInput placeholder="NAME" [(ngModel)]="nameFilter" (input)="updateList()">
-        </mat-form-field>
-    </div>
-    <div class="button">
-        <mat-form-field>
-            <mat-select placeholder="STATUS" [(ngModel)]="statusFilter" (selectionChange)="updateList()">
-                <mat-option value="alive">Alive</mat-option>
-                <mat-option value="dead">Dead</mat-option>
-                <mat-option value="unknown">Unknown</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="button">
-        <mat-form-field>
-            <input matInput placeholder="SPECIES" [(ngModel)]="speciesFilter" (input)="updateList()">
-        </mat-form-field>
-    </div>
-    <div class="button">
-        <mat-form-field>
-            <mat-select placeholder="GENDER" [(ngModel)]="genderFilter" (selectionChange)="updateList()">
-                <mat-option value="female">Female</mat-option>
-                <mat-option value="male">Male</mat-option>
-                <mat-option value="genderless">Genderless</mat-option>
-                <mat-option value="unknown">Unknown</mat-option>
-            </mat-select>
-        </mat-form-field>
-    </div>
-    <div class="button">
-        <mat-form-field>
-            <input matInput placeholder="SEARCH" [(ngModel)]="searchFilter" (input)="searchCharacters()">
-        </mat-form-field>
-    </div>
+  <div class="button">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="NAME"
+        [(ngModel)]="nameFilter"
+        (input)="updateList()"
+      />
+    </mat-form-field>
+  </div>
+  <div class="button">
+    <mat-form-field>
+      <mat-select
+        placeholder="STATUS"
+        [(ngModel)]="statusFilter"
+        (selectionChange)="updateList()"
+      >
+        <mat-option value="alive">Alive</mat-option>
+        <mat-option value="dead">Dead</mat-option>
+        <mat-option value="unknown">Unknown</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="button">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="SPECIES"
+        [(ngModel)]="speciesFilter"
+        (input)="updateList()"
+      />
+    </mat-form-field>
+  </div>
+  <div class="button">
+    <mat-form-field>
+      <mat-select
+        placeholder="GENDER"
+        [(ngModel)]="genderFilter"
+        (selectionChange)="updateList()"
+      >
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="genderless">Genderless</mat-option>
+        <mat-option value="unknown">Unknown</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="button">
+    <mat-form-field>
+      <input
+        matInput
+        placeholder="SEARCH"
+        [(ngModel)]="searchFilter"
+        (input)="searchCharacters()"
+      />
+    </mat-form-field>
+  </div>
 </nav>
 
-<mat-paginator [pageSize]="pageSize" [pageIndex]="pageIndex" [length]="totalNumOfCharacters"
-    (page)="handlePageEvent($event)" showFirstLastButtons>
+<mat-paginator
+  [pageSize]="pageSize"
+  [pageIndex]="pageIndex"
+  [length]="totalNumOfCharacters"
+  (page)="handlePageEvent($event)"
+  showFirstLastButtons
+>
 </mat-paginator>
 
 <div class="row">
-  <div *ngFor="let character of paginatedCharacters" class="character-item" (click)="openModal(character)">
-    <img [src]="character.image" alt="Character Image">
+  <div
+    *ngFor="let character of paginatedCharacters"
+    class="character-item"
+    (click)="openModal(character)"
+  >
+    <img [src]="character.image" alt="Character Image" />
   </div>
 </div>

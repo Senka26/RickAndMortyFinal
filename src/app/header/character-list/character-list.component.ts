@@ -8,10 +8,9 @@ import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-character-list',
   templateUrl: './character-list.component.html',
-  styleUrls: ['./character-list.component.scss']
+  styleUrls: ['./character-list.component.scss'],
 })
 export class CharacterListComponent implements OnInit {
-
   characters: Observable<any>;
   selectedCharacter: any;
 
@@ -31,7 +30,8 @@ export class CharacterListComponent implements OnInit {
 
   constructor(
     private characterService: CharacterService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.characters = this.characterService.getCharacters(this.pageIndex + 1);
@@ -42,7 +42,7 @@ export class CharacterListComponent implements OnInit {
     this.selectedCharacter = character;
     this.dialog.open(CharacterInfoComponent, {
       minWidth: '300px',
-      data: character
+      data: character,
     });
   }
 
@@ -54,7 +54,12 @@ export class CharacterListComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
 
-    if (this.nameFilter !== '' || this.statusFilter !== '' || this.speciesFilter !== '' || this.genderFilter !== '') {
+    if (
+      this.nameFilter !== '' ||
+      this.statusFilter !== '' ||
+      this.speciesFilter !== '' ||
+      this.genderFilter !== ''
+    ) {
       this.updateList();
       return;
     }
@@ -62,17 +67,18 @@ export class CharacterListComponent implements OnInit {
     this.characters = this.characterService.getCharacters(this.pageIndex + 1);
     this.updateList();
   }
-  
+
   searchCharacters() {
     this.paginatedCharacters = this.dataSource.data;
-    this.paginatedCharacters = this.paginatedCharacters.filter(x => 
-      x.name.toLowerCase().includes(this.searchFilter.toLowerCase()) ||
-      x.gender.toLowerCase() === this.searchFilter.toLowerCase() ||
-      x.species.toLowerCase().includes(this.searchFilter.toLowerCase()) ||
-      x.location.name.toLowerCase().includes(this.searchFilter.toLowerCase())
+    this.paginatedCharacters = this.paginatedCharacters.filter(
+      (x) =>
+        x.name.toLowerCase().includes(this.searchFilter.toLowerCase()) ||
+        x.gender.toLowerCase() === this.searchFilter.toLowerCase() ||
+        x.species.toLowerCase().includes(this.searchFilter.toLowerCase()) ||
+        x.location.name.toLowerCase().includes(this.searchFilter.toLowerCase())
     );
   }
-  
+
   updateList() {
     this.characters = this.characterService.getCharacters(
       this.pageIndex + 1,
@@ -84,18 +90,18 @@ export class CharacterListComponent implements OnInit {
 
     this.characters.subscribe({
       next: this.handleResponse.bind(this),
-      error: this.handleError.bind(this)
+      error: this.handleError.bind(this),
     });
   }
-  
+
   private handleResponse(data) {
     this.totalNumOfCharacters = data.info.count;
     if (!this.dataSource)
-        this.dataSource = new MatTableDataSource(data.results);
+      this.dataSource = new MatTableDataSource(data.results);
     this.dataSource.data = data.results;
     this.paginatedCharacters = data.results;
   }
-  
+
   private handleError() {
     this.dataSource.data = null;
     this.paginatedCharacters = null;

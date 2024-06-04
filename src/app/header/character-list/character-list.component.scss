@@ -1,65 +1,68 @@
 nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 99%;
-    margin-left: 9px;
-    margin-top: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 99%;
+  margin-left: 9px;
+  margin-top: 6px;
 }
 
 .button {
-    margin: 0 5px;
+  margin: 0 5px;
 }
 
 .button:last-child {
-    margin-left: auto;
-    margin-right: 0.5vw;
+  margin-left: auto;
+  margin-right: 0.5vw;
 }
 
 .row {
-    margin-bottom: 10px 0;
-    text-align: center;
+  margin-bottom: 10px 0;
+  text-align: center;
 }
 
 .character-item {
-    margin: 0 5px;
-    display: inline-block;
+  margin: 0 5px;
+  display: inline-block;
 
-    img {
-        cursor: pointer;
-        transition: transform 0.3s ease-in-out;
-    }
+  img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
 
-    img:hover {
-        transform: scale(1.1);
-        filter: brightness(60%);
-    }
+  img:hover {
+    transform: scale(1.1);
+    filter: brightness(60%);
+  }
 }
 
-@media only screen and (max-width: 600px) { //mobile
-    .row {
-        flex-direction: column;
-    }
+@media only screen and (max-width: 600px) {
+  //mobile
+  .row {
+    flex-direction: column;
+  }
 
-    .button {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+  .button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
 
-    .button:last-child {
-        margin-left: 0;
-        margin-right: 0;
-    }
+  .button:last-child {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
-@media only screen and (min-width: 601px) { // tablet
-    .mat-form-field {
-      width: 18vw;
-    }
+@media only screen and (min-width: 601px) {
+  // tablet
+  .mat-form-field {
+    width: 18vw;
+  }
 }
 
-@media only screen and (min-width: 1281px) { // desktop
-    .mat-form-field {
-      width: 15vw;
-    }
+@media only screen and (min-width: 1281px) {
+  // desktop
+  .mat-form-field {
+    width: 15vw;
+  }
 }

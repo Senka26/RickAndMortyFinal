@@ -1,23 +1,23 @@
 .header {
-    display: flex;
-    align-items: center;
-    margin: 1vw;
-  
-    button {
-      margin-right: 1vw;
-    }
-  
-    h1 {
-      margin: 0;
-      font-size: 2em;
-      font-weight: bold;
-    }
+  display: flex;
+  align-items: center;
+  margin: 1vw;
+
+  button {
+    margin-right: 1vw;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: bold;
+  }
 }
-  
+
 .row {
-    text-align: center;
+  text-align: center;
 }
-  
+
 .character-item {
   margin: 0 5px;
   display: inline-block;

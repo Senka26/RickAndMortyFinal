@@ -6,24 +6,20 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
   @Input() error: string | null;
   @Output() submitEM = new EventEmitter();
 
   user: object = {
-    name: "rick",
-    password: "morty"
-  }
+    name: 'rick',
+    password: 'morty',
+  };
 
-  constructor(
-    private router: Router,
-    private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   username: string = '';
   password: string = '';
@@ -35,14 +31,17 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.form.valid) {
-      if(this.user['name'] === this.username && this.user['password'] === this.password) {
+      if (
+        this.user['name'] === this.username &&
+        this.user['password'] === this.password
+      ) {
         this.submitEM.emit(this.form.value);
         this.router.navigate(['/header']);
       } else {
-        this.error = "Error: Wrong username or password.";
+        this.error = 'Error: Wrong username or password.';
       }
     } else {
-      this.error = "Error: Form is not valid.";
+      this.error = 'Error: Form is not valid.';
     }
   }
 }

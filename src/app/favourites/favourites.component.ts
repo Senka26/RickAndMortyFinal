@@ -7,16 +7,13 @@ import { EditCharacterComponent } from './edit-character/edit-character.componen
 @Component({
   selector: 'app-favourites',
   templateUrl: './favourites.component.html',
-  styleUrls: ['./favourites.component.scss']
+  styleUrls: ['./favourites.component.scss'],
 })
 export class FavouritesComponent implements OnInit {
-
   favouriteCharacters: any[] = [];
   dataSource: MatTableDataSource<any>;
 
-  constructor(
-    private router: Router,
-    private dialog: MatDialog) { }
+  constructor(private router: Router, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     const favouritesFromStorage = localStorage.getItem('favouriteCharacters');
@@ -37,14 +34,18 @@ export class FavouritesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((editedCharacter: any) => {
       if (editedCharacter) {
-        const index = this.favouriteCharacters.findIndex((char) => char.id === editedCharacter.id);
-  
-        if(index) {
+        const index = this.favouriteCharacters.findIndex(
+          (char) => char.id === editedCharacter.id
+        );
+
+        if (index) {
           this.favouriteCharacters[index] = { ...editedCharacter };
-          localStorage.setItem('favouriteCharacters', JSON.stringify(this.favouriteCharacters));
+          localStorage.setItem(
+            'favouriteCharacters',
+            JSON.stringify(this.favouriteCharacters)
+          );
         }
       }
     });
   }
-
 }
